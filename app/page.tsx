@@ -1,56 +1,57 @@
-import { Link } from "@heroui/link";
-import { Snippet } from "@heroui/snippet";
-import { Code } from "@heroui/code";
-import { button as buttonStyles } from "@heroui/theme";
-
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
+import { Divider } from "@heroui/divider";
+import { Button } from "@heroui/button";
+import { Switch } from "@heroui/switch";
+import { Image } from "@heroui/image";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
-        <span className={title()}>Make&nbsp;</span>
-        <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
-        <br />
-        <span className={title()}>
-          websites regardless of your design experience.
-        </span>
-        <div className={subtitle({ class: "mt-4" })}>
-          Beautiful, fast and modern React UI library.
-        </div>
+    <div>
+      <h4 className="font-bold text-large">Página de Componentes</h4>
+      <Divider className="my-4" />
+      <span className="text-default-500">Botones</span>
+      <div className="my-5 flex gap-2">
+        <Button>Default</Button>
+        <Button color="primary">Primary</Button>
+        <Button color="secondary">Secondary</Button>
+        <Button color="success">Success</Button>
+        <Button color="warning">Warning</Button>
+        <Button color="danger">Danger</Button>
+        <Button color="success" variant="flat" isLoading>
+          Flat
+        </Button>
+        <Button color="danger" variant="bordered" isLoading>
+          Bordered
+        </Button>
       </div>
-
-      <div className="flex gap-3">
-        <Link
-          isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href={siteConfig.links.docs}
-        >
-          Documentation
-        </Link>
-        <Link
-          isExternal
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={siteConfig.links.github}
-        >
-          <GithubIcon size={20} />
-          GitHub
-        </Link>
+      <span className="text-default-500">Cards</span>
+      <div className="mt-5 flex gap-2">
+        <Card>
+          <CardHeader className="flex-col items-start">
+            <h5 className="font-bold">Cargador portatil</h5>
+            <small className="text-tiny">Cargador con mas de 4 whatts de potencia</small>
+          </CardHeader>
+          <CardBody>
+            <Image
+              alt="Card de prueba"
+              className="object-cover rounded-xl"
+              src="https://samsung-bolivia.s3.amazonaws.com/product-family-item-image-image/square/product-family-item-image-image_IwZJQaRG9MC4tYKx01Fy.png"
+              width={270}
+            />
+          </CardBody>
+          <CardFooter className="flex justify-between">
+            <Button color="primary" size="sm">
+              Comprar
+            </Button>
+            <Button color="primary" variant="bordered" size="sm">
+              Agregar al carrito
+            </Button>
+          </CardFooter>
+        </Card>
+        <Switch defaultSelected color="danger">
+          Género
+        </Switch>
       </div>
-
-      <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
-          </span>
-        </Snippet>
-      </div>
-    </section>
+    </div>
   );
 }
